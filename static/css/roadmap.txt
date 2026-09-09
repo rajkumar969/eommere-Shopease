@@ -1,0 +1,133 @@
+1. Home Page
+2. Register
+3. Login
+4. User Dashboard
+5. Categories
+6. Product List
+7. Product Details
+8. Cart
+9. Wishlist
+10. Checkout
+11. Payment
+12. Order Success
+13. Order History
+14. Profile
+
+----------------------
+
+15. Admin Login
+16. Admin Dashboard
+17. Products CRUD
+18. Categories CRUD
+19. Brands CRUD
+20. Orders Management
+21. Users Management
+22. Coupons
+23. Reports
+24. Settings
+
+
+
+{% if request.session.username %}
+
+<div class="profile-wrapper">
+
+    <!-- Profile Button -->
+    <button class="profile-btn" type="button" id="profileToggle">
+
+        <!-- Circular Profile Image -->
+        <div class="profile-avatar">
+            <img
+                src="{% static 'images/default-profile.png' %}"
+                alt="Profile"
+            >
+        </div>
+
+        <!-- User Name -->
+        <span class="profile-name">
+            {{ request.session.username }}
+        </span>
+
+        <!-- Dropdown Arrow -->
+        <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+    </button>
+
+
+    <!-- ================= DROPDOWN ================= -->
+
+    <div class="profile-dropdown" id="profileDropdown">
+
+        <!-- User Info -->
+        <div class="dropdown-user">
+
+            <div class="dropdown-avatar">
+                <img
+                    src="{% static 'images/default-profile.png' %}"
+                    alt="Profile"
+                >
+            </div>
+
+            <div>
+                <p class="dropdown-welcome">
+                    Welcome
+                </p>
+
+                <p class="dropdown-username">
+                    {{ request.session.username }}
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="dropdown-divider"></div>
+
+
+        <!-- My Profile -->
+        <a href="{% url 'profile' %}" class="dropdown-item">
+            <span class="dropdown-icon">
+                <i class="fa-regular fa-user"></i>
+            </span>
+
+            <span>My Profile</span>
+        </a>
+
+
+        <!-- My Orders -->
+        <a href="{% url 'orders' %}" class="dropdown-item">
+            <span class="dropdown-icon">
+                <i class="fa-solid fa-box"></i>
+            </span>
+
+            <span>My Orders</span>
+        </a>
+
+        <div class="dropdown-divider"></div>
+
+
+        <!-- Logout -->
+        
+        <a href="{% url 'logout' %}" class="dropdown-item logout-item">
+
+            <span class="dropdown-icon">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<!-- Login Button -->
+
+<a href="{% url 'login' %}" class="login-btn">
+    Login
+</a>
+
+{% endif %}

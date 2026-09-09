@@ -1,0 +1,379 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home | ShopEase
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <span class="offer">
+                    Big Sale 50% Off
+                </span>
+
+                <h1>
+                    Discover Amazing Products
+                </h1>
+
+                <p>
+                    Shop the latest fashion, electronics, gadgets, furniture,
+                    and much more at unbeatable prices.
+                </p>
+
+                <a href="{% url 'products_list' %}" class="shop-btn">
+
+                    Shop Now
+
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img src="{% static 'images/banner4.png' %}" alt="Banner">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORY ================= -->
+
+<section class="category">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Shop By Category</h2>
+
+            <p>Explore our top categories</p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h4>Electronics</h4>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-shirt"></i>
+                <h4>Fashion</h4>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-laptop"></i>
+                <h4>Laptops</h4>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-couch"></i>
+                <h4>Furniture</h4>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-clock"></i>
+                <h4>Watches</h4>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-shoe-prints"></i>
+                <h4>Shoes</h4>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+
+<section class="featured">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Featured Products</h2>
+
+            <p>Most popular products</p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+            {% for i in products %}
+
+            <div class="product-card">
+
+
+                <!-- Product Image -->
+
+                <div class="product-image">
+
+                    {% if i.image %}
+
+                    <img
+                        src="{{ i.image.url }}"
+                        alt="{{ i.product_name }}"
+                    >
+
+                    {% else %}
+
+                
+                        <img src="{{ i.image.url }}" alt="{{ i.product_name }}">
+                     
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Product Information -->
+
+                <div class="product-info">
+
+                    <h3>
+
+                        {{ i.product_name }}
+
+                    </h3>
+
+
+                    <!-- Brand -->
+
+                    {% if i.brand %}
+
+                    <p class="product-brand">
+
+                        {{ i.brand.name }}
+
+                    </p>
+
+                    {% endif %}
+
+
+                    <!-- Price -->
+
+                    <p class="price">
+
+                        ₹{{ i.price }}
+
+                    </p>
+
+
+                    <!-- Rating -->
+
+                    <p class="product-rating">
+
+                        ⭐ {{ i.rating }}/5
+
+                    </p>
+
+
+                    <!-- Buttons -->
+
+                    <div class="product-buttons">
+
+                        <a
+                            href="{% url 'product_detail' i.id %}"
+                            class="details-btn"
+                        >
+
+                            View Details
+
+                        </a>
+
+
+                        <a
+                            href="#"
+                            class="cart-btn"
+                        >
+
+                            Add to Cart
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% empty %}
+
+            <div class="no-products">
+
+                <h3>No Products Available</h3>
+
+                <p>
+                    Products will appear here soon.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= FLASH SALE ================= -->
+
+<section class="flash-sale">
+
+    <div class="container">
+
+        <div class="sale-content">
+
+            <h2>
+
+                Flash Sale
+
+            </h2>
+
+            <p>
+
+                Up to 70% Discount
+
+            </p>
+
+            <a href="#" class="shop-btn">
+
+                Shop Deals
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="services">
+
+    <div class="container">
+
+        <div class="service-grid">
+
+            <div class="service-card">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <h4>
+
+                    Free Delivery
+
+                </h4>
+
+            </div>
+
+            <div class="service-card">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <h4>
+
+                    Secure Payment
+
+                </h4>
+
+            </div>
+
+            <div class="service-card">
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                <h4>
+
+                    Easy Return
+
+                </h4>
+
+            </div>
+
+            <div class="service-card">
+
+                <i class="fa-solid fa-headset"></i>
+
+                <h4>
+
+                    24/7 Support
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <div class="container">
+
+        <div class="newsletter-box">
+
+            <h2>
+
+                Subscribe Newsletter
+
+            </h2>
+
+            <p>
+
+                Get latest updates and exclusive offers.
+
+            </p>
+
+            <form>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email">
+
+                <button>
+
+                    Subscribe
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

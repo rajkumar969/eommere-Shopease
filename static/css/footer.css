@@ -1,0 +1,84 @@
+/* ===========================================
+   FOOTER
+=========================================== */
+
+.footer{
+    background:#111827;
+    color:#ffffff;
+    padding:60px 0 20px;
+    margin-top:80px;
+}
+
+.footer-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-section h3{
+    font-size:22px;
+    margin-bottom:20px;
+    color:#ffffff;
+}
+
+.footer-section p{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+.footer-section ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.footer-section ul li{
+    margin-bottom:12px;
+}
+
+.footer-section ul li a{
+    color:#d1d5db;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer-section ul li a:hover{
+    color:#2563eb;
+    padding-left:6px;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+    margin-top:40px;
+    padding-top:20px;
+    text-align:center;
+}
+
+.footer-bottom p{
+    color:#9ca3af;
+    font-size:15px;
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media(max-width:768px){
+
+.footer{
+
+text-align:center;
+
+}
+
+.footer-container{
+
+grid-template-columns:1fr;
+
+}
+
+}

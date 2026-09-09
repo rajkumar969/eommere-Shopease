@@ -1,0 +1,74 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description"
+          content="{% block description %}Professional Django E-Commerce Website{% endblock %}">
+
+    <meta name="keywords"
+          content="Ecommerce, Django, Online Shopping">
+
+    <!-- Title -->
+    <title>
+        {% block title %}
+            E-Commerce
+        {% endblock %}
+    </title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Page Specific CSS -->
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    {% include "includes/navbar.html" %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include "includes/footer.html" %}
+
+    <!-- Global JavaScript -->
+    <!-- <script src="{% static 'js/base.js' %}"></script> -->
+
+    <!-- Page Specific JavaScript -->
+    {% block js %}
+    {% endblock %}
+
+</body>
+
+</html>
+

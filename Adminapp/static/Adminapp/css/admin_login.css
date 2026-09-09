@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #f4f7fb;
+
+    color: #1f2937;
+
+}
+
+
+.admin-login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+.admin-login-card {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    background: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.10);
+
+}
+
+
+.admin-logo {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.admin-logo h1 {
+
+    font-size: 32px;
+
+    color: #2563eb;
+
+}
+
+
+.admin-logo h1 span {
+
+    color: #111827;
+
+}
+
+
+.admin-logo p {
+
+    margin-top: 5px;
+
+    font-size: 14px;
+
+    color: #6b7280;
+
+}
+
+
+.login-heading {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.login-heading h2 {
+
+    font-size: 25px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.login-heading p {
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+}
+
+
+.form-group {
+
+    margin-bottom: 20px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+}
+
+
+.form-group input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+
+}
+
+
+.admin-login-btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.admin-login-btn:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+.message {
+
+    padding: 11px 14px;
+
+    margin-bottom: 18px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+}
+
+
+.message.error {
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+}
+
+
+.message.success {
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+}
+
+
+.back-home {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+
+.back-home a {
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+}
+
+
+.back-home a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+@media (max-width: 500px) {
+
+    .admin-login-card {
+
+        padding: 30px 20px;
+
+    }
+
+}

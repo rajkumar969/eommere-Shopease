@@ -1,0 +1,602 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ product.product_name }} | ShopEase
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ================= BREADCRUMB ================= -->
+
+<section class="breadcrumb-section">
+
+    <div class="container">
+
+        <a href="/">Home</a>
+
+        <span>/</span>
+
+        <a href="#">{{ product.category.category_name }}</a>
+
+        <span>/</span>
+
+        <strong>{{ product.product_name }}</strong>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PRODUCT DETAILS ================= -->
+
+<section class="product-detail-page">
+
+    <div class="container">
+
+        <div class="product-detail-wrapper">
+
+
+            <!-- PRODUCT IMAGE -->
+
+            <div class="product-detail-gallery">
+
+                <div class="main-product-image">
+
+                    {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.product_name }}"
+                        id="mainProductImage"
+                    >
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="product-thumbnails">
+
+                    {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        class="thumbnail active"
+                        onclick="changeImage(this)"
+                    >
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="product-detail-info">
+
+
+                <!-- Brand -->
+
+                <p class="product-brand">
+
+                    {{ product.brand.name }}
+
+                </p>
+
+
+                <!-- Product Name -->
+
+                <h1>
+
+                    {{ product.product_name }}
+
+                </h1>
+
+
+                <!-- Rating -->
+
+                <div class="product-rating">
+
+                    <span class="rating-badge">
+
+                        ★ {{ product.rating }}
+
+                    </span>
+
+                    <span class="rating-text">
+
+                        Product Rating
+
+                    </span>
+
+                </div>
+
+
+                <hr>
+
+
+                <!-- Price -->
+
+                <div class="product-price-section">
+
+                    <span class="current-price">
+
+                        ₹{{ product.price }}
+
+                    </span>
+
+
+                    {% if product.discount %}
+
+                    <span class="discount">
+
+                        {{ product.discount }}% OFF
+
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Stock -->
+
+                <div class="product-stock">
+
+                    {% if product.stock > 0 %}
+
+                    <span class="in-stock">
+
+                        ✓ In Stock
+
+                    </span>
+
+                    <span>
+
+                        Only {{ product.stock }} available
+
+                    </span>
+
+                    {% else %}
+
+                    <span class="out-stock">
+
+                        Out of Stock
+
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <hr>
+
+
+                <!-- Category Details -->
+
+                <div class="product-meta">
+
+                    <p>
+
+                        <strong>Category:</strong>
+
+                        {{ product.category.category_name }}
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>Subcategory:</strong>
+
+                        {{ product.subcategory.name }}
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>Brand:</strong>
+
+                        {{ product.brand.name }}
+
+                    </p>
+
+                </div>
+
+
+                <!-- Quantity -->
+
+                <div class="quantity-section">
+
+                    <span>Quantity</span>
+
+                    <div class="quantity-control">
+
+                        <button
+                            type="button"
+                            onclick="decreaseQuantity()"
+                        >
+                            −
+                        </button>
+
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            max="{{ product.stock }}"
+                        >
+
+
+                        <button
+                            type="button"
+                            onclick="increaseQuantity()"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="product-action-buttons">
+
+                    <a href="#" class="add-cart-btn">
+
+                        🛒 Add to Cart
+
+                    </a>
+
+
+                    <a href="#" class="buy-now-btn">
+
+                        Buy Now
+
+                    </a>
+
+                </div>
+
+
+                <!-- Wishlist -->
+
+                <button class="detail-wishlist-btn">
+
+                    ♡ Add to Wishlist
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PRODUCT DESCRIPTION ================= -->
+
+<section class="product-extra-section">
+
+    <div class="container">
+
+        <div class="product-tabs-container">
+
+
+            <div class="product-tabs">
+
+                <button
+                    class="tab-btn active"
+                    onclick="openTab('description')"
+                >
+
+                    Description
+
+                </button>
+
+
+                <button
+                    class="tab-btn"
+                    onclick="openTab('specifications')"
+                >
+
+                    Specifications
+
+                </button>
+
+
+                <button
+                    class="tab-btn"
+                    onclick="openTab('reviews')"
+                >
+
+                    Reviews
+
+                </button>
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <div
+                id="description"
+                class="tab-content active"
+            >
+
+                <h2>Product Description</h2>
+
+                <p>
+
+                    {{ product.description|default:"No description available for this product." }}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- SPECIFICATIONS -->
+
+            <div
+                id="specifications"
+                class="tab-content"
+            >
+
+                <h2>Specifications</h2>
+
+
+                <table class="specification-table">
+
+                    <tr>
+
+                        <th>Product Name</th>
+
+                        <td>{{ product.product_name }}</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <th>Brand</th>
+
+                        <td>{{ product.brand.name }}</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <th>Category</th>
+
+                        <td>{{ product.category.category_name }}</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <th>Subcategory</th>
+
+                        <td>{{ product.subcategory.name }}</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <th>Stock</th>
+
+                        <td>{{ product.stock }}</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <th>Status</th>
+
+                        <td>
+
+                            {% if product.status %}
+
+                            Available
+
+                            {% else %}
+
+                            Unavailable
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- REVIEWS -->
+
+            <div
+                id="reviews"
+                class="tab-content"
+            >
+
+                <h2>Customer Reviews</h2>
+
+                <p>
+
+                    No reviews available yet.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RELATED PRODUCTS ================= -->
+
+<section class="related-product-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Related Products</h2>
+
+            <p>You may also like these products.</p>
+
+        </div>
+
+
+        <div class="related-product-grid">
+
+
+            {% for item in related_products %}
+
+            <div class="related-product-card">
+
+
+                <div class="related-image">
+
+                    <img
+                        src="{{ item.image.url }}"
+                        alt="{{ item.product_name }}"
+                    >
+
+                </div>
+
+
+                <div class="related-info">
+
+                    <h3>
+
+                        {{ item.product_name }}
+
+                    </h3>
+
+
+                    <p class="related-price">
+
+                        ₹{{ item.price }}
+
+                    </p>
+
+
+                    <a
+                        href="{% url 'product_detail' item.id %}"
+                        class="related-details-btn"
+                    >
+
+                        View Product
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            {% empty %}
+
+            <p class="no-related-products">
+
+                No related products available.
+
+            </p>
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+function increaseQuantity() {
+
+    let quantity = document.getElementById("quantity");
+
+    let max = parseInt(quantity.max);
+
+    if (parseInt(quantity.value) < max) {
+
+        quantity.value = parseInt(quantity.value) + 1;
+
+    }
+
+}
+
+
+function decreaseQuantity() {
+
+    let quantity = document.getElementById("quantity");
+
+    if (parseInt(quantity.value) > 1) {
+
+        quantity.value = parseInt(quantity.value) - 1;
+
+    }
+
+}
+
+
+function openTab(tabId) {
+
+    document.querySelectorAll(".tab-content").forEach(function(tab) {
+
+        tab.classList.remove("active");
+
+    });
+
+
+    document.querySelectorAll(".tab-btn").forEach(function(button) {
+
+        button.classList.remove("active");
+
+    });
+
+
+    document.getElementById(tabId).classList.add("active");
+
+    event.target.classList.add("active");
+
+}
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,540 @@
+/* =========================================
+   BRAND PAGE
+========================================= */
+
+.brand-page {
+    width: 100%;
+    padding: 5px 0;
+}
+
+
+/* =========================================
+   BRAND HEADER
+========================================= */
+
+.brand-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+
+.brand-title h2,
+.brand-header h2 {
+    margin: 0;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    color: #1f2937;
+}
+
+
+.brand-title p,
+.brand-header p {
+    margin: 6px 0 0;
+
+    font-size: 14px;
+
+    color: #6b7280;
+}
+
+
+/* =========================================
+   HEADER BUTTON GROUP
+========================================= */
+
+.brand-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   ADD BRAND BUTTON
+========================================= */
+
+.add-brand-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 20px;
+
+    background: #597bc4;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+.add-brand-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   DASHBOARD BUTTON
+========================================= */
+
+.dashboard-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    background: #597bc4;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+.dashboard-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.brand-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+}
+
+
+/* =========================================
+   BRAND TABLE
+========================================= */
+
+.brand-table {
+    width: 100%;
+
+    min-width: 950px;
+
+    border-collapse: collapse;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.brand-table thead {
+    background: #f8fafc;
+}
+
+
+.brand-table th {
+    padding: 17px 20px;
+
+    text-align: left;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #374151;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.brand-table td {
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #eef0f3;
+
+    font-size: 14px;
+
+    color: #374151;
+
+    vertical-align: middle;
+}
+
+
+.brand-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+
+.brand-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+
+.brand-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   BRAND IMAGE
+========================================= */
+
+.brand-image {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    padding: 5px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   NO BRAND IMAGE
+========================================= */
+
+.no-brand-image {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f3f4f6;
+
+    color: #9ca3af;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   BRAND NAME
+========================================= */
+
+.brand-name {
+    color: #1f2937;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   SLUG
+========================================= */
+
+.brand-slug {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    background: #f1f5f9;
+
+    border-radius: 6px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.brand-description {
+    max-width: 240px;
+
+    color: #64748b;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.brand-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.brand-status.active {
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+
+.brand-status.inactive {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.brand-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* =========================================
+   EDIT + DELETE BUTTON
+========================================= */
+
+.brand-edit-btn,
+.brand-delete-btn {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.3s ease;
+}
+
+
+/* EDIT BUTTON */
+
+.brand-edit-btn {
+    background: #fef3c7;
+
+    color: #d97706;
+}
+
+
+.brand-edit-btn:hover {
+    background: #fde68a;
+
+    transform: translateY(-2px);
+}
+
+
+/* DELETE BUTTON */
+
+.brand-delete-btn {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+.brand-delete-btn:hover {
+    background: #fecaca;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-brand {
+    text-align: center;
+
+    padding: 70px 20px;
+}
+
+
+.empty-brand i {
+    font-size: 45px;
+
+    color: #9ca3af;
+}
+
+
+.empty-brand h3 {
+    margin: 15px 0 8px;
+
+    color: #374151;
+
+    font-size: 20px;
+}
+
+
+.empty-brand p {
+    margin-bottom: 22px;
+
+    color: #6b7280;
+}
+
+
+/* =========================================
+   EMPTY ADD BRAND BUTTON
+========================================= */
+
+.empty-add-brand-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px 20px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+.empty-add-brand-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+
+    .brand-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .brand-header-actions {
+        width: 100%;
+
+        display: flex;
+
+        gap: 10px;
+    }
+
+
+    .add-brand-btn,
+    .dashboard-btn {
+        flex: 1;
+
+        justify-content: center;
+    }
+
+
+    .brand-table th,
+    .brand-table td {
+        padding: 14px 15px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .brand-header h2 {
+        font-size: 22px;
+    }
+
+
+    .brand-header-actions {
+        flex-direction: column;
+    }
+
+
+    .add-brand-btn,
+    .dashboard-btn {
+        width: 100%;
+    }
+
+
+    .empty-brand {
+        padding: 50px 15px;
+    }
+
+}

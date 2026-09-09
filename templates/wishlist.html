@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Wishlist | ShopEase
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container">
+
+        <h1>My Wishlist</h1>
+
+        <p>Save your favourite products for later.</p>
+
+    </div>
+
+</section>
+
+<section class="wishlist-section">
+
+    <div class="container">
+
+        {% if wishlist_items %}
+
+        <div class="wishlist-grid">
+
+            {% for item in wishlist_items %}
+
+            <div class="wishlist-card">
+
+                <div class="wishlist-image">
+
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.product_name }}">
+
+                </div>
+
+                <div class="wishlist-content">
+
+                    <h3>{{ item.product.product_name }}</h3>
+
+                    <p>{{ item.product.brand }}</p>
+
+                    <h4>₹{{ item.product.selling_price }}</h4>
+
+                    <div class="wishlist-buttons">
+
+                        <a href="#" class="cart-btn">
+
+                            Add To Cart
+
+                        </a>
+
+                        <a href="#" class="remove-btn">
+
+                            Remove
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-wishlist">
+
+            <h2>Your Wishlist is Empty</h2>
+
+            <p>Add your favourite products to view them here.</p>
+
+            <a href="{% url 'products' %}" class="shop-btn">
+
+                Continue Shopping
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

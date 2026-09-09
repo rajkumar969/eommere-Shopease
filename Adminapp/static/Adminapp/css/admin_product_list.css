@@ -1,0 +1,216 @@
+/* =========================================
+   PRODUCT PAGE
+========================================= */
+
+.product-page {
+    width: 100%;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.product-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.product-header p {
+    margin-top: 6px;
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   ADD PRODUCT BUTTON
+========================================= */
+
+.add-product-btn {
+    padding: 11px 18px;
+    text-decoration: none;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.product-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+}
+
+.product-table th {
+    text-align: left;
+    padding: 15px;
+    white-space: nowrap;
+}
+
+.product-table td {
+    padding: 14px 15px;
+    vertical-align: middle;
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.product-image {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.no-image {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+
+/* =========================================
+   PRODUCT NAME
+========================================= */
+
+.product-name {
+    font-weight: 600;
+    min-width: 140px;
+}
+
+.product-table small {
+    opacity: 0.6;
+    font-size: 11px;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status.active {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status.inactive {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+
+/* =========================================
+   STOCK
+========================================= */
+
+.stock {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.stock.available {
+    color: #15803d;
+}
+
+.stock.out {
+    color: #dc2626;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-buttons a {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+.view-btn {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.edit-btn {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-products {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-products i {
+    font-size: 45px;
+    opacity: 0.4;
+}
+
+.empty-products h3 {
+    margin-top: 15px;
+}
+
+.empty-products a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+}

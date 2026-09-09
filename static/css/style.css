@@ -1,0 +1,98 @@
+/* =====================================================
+   E-COMMERCE WEBSITE - MASTER STYLESHEET
+   Project  : Django E-Commerce
+   Author   : Raj Kumar
+   Version  : 1.0
+====================================================== */
+
+
+/* =====================================================
+   1. VARIABLES
+====================================================== */
+
+/* @import url("variables.css"); */
+
+
+/* =====================================================
+   2. RESET & GLOBAL STYLES
+====================================================== */
+
+@import url("base.css");
+
+
+/* =====================================================
+   3. LAYOUT
+====================================================== */
+
+@import url("navbar.css");
+@import url("footer.css");
+
+
+/* =====================================================
+   4. REUSABLE COMPONENTS
+====================================================== */
+
+/* @import url("button.css");
+@import url("form.css");
+@import url("card.css");
+@import url("table.css");
+@import url("alert.css");
+@import url("modal.css"); */
+
+
+/* =====================================================
+   5. USER PAGES
+====================================================== */
+
+@import url("home.css");
+@import url("register.css");
+@import url("login.css");
+@import url("forgot-password.css");
+@import url("profile.css"); 
+
+
+/* =====================================================
+   6. PRODUCT MODULE
+====================================================== */
+
+@import url("category.css");
+@import url("product.css");
+@import url("productdetail.css");
+@import url("search.css"); 
+
+
+/* =====================================================
+   7. SHOPPING MODULE
+====================================================== */
+ 
+@import url("cart.css"); 
+@import url("wishlist.css");
+@import url("checkout.css");
+@import url("payment.css");
+@import url("order.css"); 
+
+
+/* =====================================================
+   8. ADMIN PANEL
+====================================================== */
+
+/* @import url("dashboard.css");
+@import url("manage-product.css");
+@import url("manage-category.css");
+@import url("manage-brand.css");
+@import url("manage-user.css");
+@import url("reports.css"); */
+
+
+/* =====================================================
+   9. ANIMATIONS
+====================================================== */
+
+/* @import url("animation.css"); */
+
+
+/* =====================================================
+   10. RESPONSIVE DESIGN
+====================================================== */
+
+/* @import url("responsive.css"); */

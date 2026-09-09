@@ -1,0 +1,637 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ product.product_name }} | ShopEase
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ================= PAGE HEADER ================= -->
+
+<section class="page-header">
+
+    <div class="container">
+
+        <h1>Product Details</h1>
+
+        <p>
+            Explore product information and specifications.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCT DETAILS ================= -->
+
+<section class="product-details">
+
+    <div class="container">
+
+        <div class="details-wrapper">
+
+
+            <!-- LEFT : PRODUCT IMAGE -->
+
+            <div class="product-gallery">
+
+                <div class="main-image">
+
+                    {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.product_name }}"
+                    >
+
+                    {% else %}
+
+                    <img
+                        src="{% static 'images/no-image.png' %}"
+                        alt="No Image"
+                    >
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Thumbnails -->
+
+                {% if product.image %}
+
+                <div class="thumbnail-images">
+
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.product_name }}"
+                    >
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- RIGHT : PRODUCT INFORMATION -->
+
+            <div class="product-info">
+
+
+                <!-- Brand -->
+
+                {% if product.brand %}
+
+                <span class="brand">
+
+                    {{ product.brand.name }}
+
+                </span>
+
+                {% endif %}
+
+
+                <!-- Product Name -->
+
+                <h2>
+
+                    {{ product.product_name }}
+
+                </h2>
+
+
+                <!-- Rating -->
+
+                <div class="rating">
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>
+
+                        {{ product.rating }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- Price -->
+
+                <div class="price-box">
+
+                    <span class="price">
+
+                        ₹{{ product.price }}
+
+                    </span>
+
+
+                    {% if product.discount %}
+
+                    <span class="old-price">
+
+                        ₹{{ product.discount }}
+
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Stock -->
+
+                {% if product.stock > 0 %}
+
+                <p class="stock">
+
+                    ✔ In Stock ({{ product.stock }} Available)
+
+                </p>
+
+                {% else %}
+
+                <p class="out-of-stock">
+
+                    ✖ Out of Stock
+
+                </p>
+
+                {% endif %}
+
+
+                <!-- Category -->
+
+                <p>
+
+                    <strong>Category :</strong>
+
+                    {{ product.category.category_name }}
+
+                </p>
+
+
+                <!-- Subcategory -->
+
+                {% if product.subcategory %}
+
+                <p>
+
+                    <strong>Subcategory :</strong>
+
+                    {{ product.subcategory.name }}
+
+                </p>
+
+                {% endif %}
+
+
+                <!-- Brand -->
+
+                {% if product.brand %}
+
+                <p>
+
+                    <strong>Brand :</strong>
+
+                    {{ product.brand.name }}
+
+                </p>
+
+                {% endif %}
+
+
+                <!-- Quantity -->
+
+                <div class="quantity">
+
+                    <label>
+
+                        Quantity
+
+                    </label>
+
+
+                    <div class="quantity-box">
+
+                        <button type="button" id="decrease">
+
+                            -
+
+                        </button>
+
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            max="{{ product.stock }}"
+                        >
+
+
+                        <button type="button" id="increase">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Action Buttons -->
+
+                <div class="action-buttons">
+
+                    <a href="#" class="cart-btn">
+
+                        Add To Cart
+
+                    </a>
+
+
+                    <a href="#" class="buy-btn">
+
+                        Buy Now
+
+                    </a>
+
+                </div>
+
+
+                <!-- Wishlist -->
+
+                <a href="#" class="wishlist-btn">
+
+                    ❤ Add To Wishlist
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DESCRIPTION ================= -->
+
+<section class="description">
+
+    <div class="container">
+
+        <h2>
+
+            Product Description
+
+        </h2>
+
+
+        <p>
+
+            {% if product.description %}
+
+                {{ product.description }}
+
+            {% else %}
+
+                No description available for this product.
+
+            {% endif %}
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SPECIFICATIONS ================= -->
+
+<section class="specification">
+
+    <div class="container">
+
+        <h2>
+
+            Specifications
+
+        </h2>
+
+
+        <table>
+
+            <tr>
+
+                <th>Product Name</th>
+
+                <td>
+
+                    {{ product.product_name }}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Brand</th>
+
+                <td>
+
+                    {{ product.brand.name }}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Category</th>
+
+                <td>
+
+                    {{ product.category.category_name }}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Subcategory</th>
+
+                <td>
+
+                    {{ product.subcategory.name }}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Price</th>
+
+                <td>
+
+                    ₹{{ product.price }}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Stock</th>
+
+                <td>
+
+                    {{ product.stock }}
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Rating</th>
+
+                <td>
+
+                    {{ product.rating }} / 5
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <th>Status</th>
+
+                <td>
+
+                    {% if product.status %}
+
+                        Available
+
+                    {% else %}
+
+                        Unavailable
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CUSTOMER REVIEWS ================= -->
+
+<section class="reviews">
+
+    <div class="container">
+
+        <h2>
+
+            Customer Reviews
+
+        </h2>
+
+
+        <!-- Temporary Static Reviews -->
+
+        <div class="review-card">
+
+            <h4>
+
+                Raj Kumar
+
+            </h4>
+
+            <span>
+
+                ⭐⭐⭐⭐⭐
+
+            </span>
+
+            <p>
+
+                Excellent quality product.
+
+            </p>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <h4>
+
+                Rahul
+
+            </h4>
+
+            <span>
+
+                ⭐⭐⭐⭐
+
+            </span>
+
+            <p>
+
+                Value for money.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RELATED PRODUCTS ================= -->
+
+<section class="related-products">
+
+    <div class="container">
+
+        <h2>
+
+            Related Products
+
+        </h2>
+
+
+        <div class="product-grid">
+
+
+            {% for item in related_products %}
+
+
+            <div class="product-card">
+
+
+                {% if item.image %}
+
+                <img
+                    src="{{ item.image.url }}"
+                    alt="{{ item.product_name }}"
+                >
+
+                {% endif %}
+
+
+                <h3>
+
+                    {{ item.product_name }}
+
+                </h3>
+
+
+                <p>
+
+                    ₹{{ item.price }}
+
+                </p>
+
+
+                <a
+                    href="{% url 'product_detail' item.slug %}"
+                    class="details-btn"
+                >
+
+                    View Details
+
+                </a>
+
+
+            </div>
+
+
+            {% empty %}
+
+
+            <p>
+
+                No Related Products Available
+
+            </p>
+
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUANTITY JAVASCRIPT ================= -->
+
+<script>
+
+const decreaseBtn = document.getElementById("decrease");
+
+const increaseBtn = document.getElementById("increase");
+
+const quantityInput = document.getElementById("quantity");
+
+
+decreaseBtn.addEventListener("click", function(){
+
+    let value = parseInt(quantityInput.value);
+
+    if(value > 1){
+
+        quantityInput.value = value - 1;
+
+    }
+
+});
+
+
+increaseBtn.addEventListener("click", function(){
+
+    let value = parseInt(quantityInput.value);
+
+    let maxStock = parseInt(quantityInput.max);
+
+    if(value < maxStock){
+
+        quantityInput.value = value + 1;
+
+    }
+
+});
+
+</script>
+
+
+{% endblock %}

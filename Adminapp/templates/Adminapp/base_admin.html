@@ -1,0 +1,400 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        Admin Dashboard
+        {% endblock %}
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- Admin Dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="{% static 'Adminapp/css/dashboard_admin.css' %}">
+        <link rel="stylesheet" href="{% static 'Adminapp/css/base-admin.css' %}">
+        <link rel="stylesheet" href="{% static 'Adminapp/css/admin_login.css' %}">
+         <link rel="stylesheet" href="{% static 'Adminapp/css/admin_category_list.css' %}">
+        <link rel="stylesheet" href="{% static 'Adminapp/css/category_add.css' %}">
+         <link rel="stylesheet" href="{% static 'Adminapp/css/admin_subcategory.css' %}">
+          <link rel="stylesheet" href="{% static 'Adminapp/css/product-form.css' %}">
+           <link rel="stylesheet" href="{% static 'Adminapp/css/admin_product_list.css' %}">
+             <link rel="stylesheet" href="{% static 'Adminapp/css/admin_product_edit.css' %}">
+             <link rel="stylesheet" href="{% static 'Adminapp/css/admin_brand_list.css' %}">
+             <link rel="stylesheet" href="{% static 'Adminapp/css/admin_brand_add.css' %}">
+           
+
+    
+
+    
+
+    
+
+    
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+
+<div class="admin-wrapper">
+
+
+    <!-- =================================
+         SIDEBAR
+    ================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <!-- Logo -->
+
+        <div class="admin-logo">
+
+            <a href="{% url 'dashboard' %}">
+
+                <span>Shop</span>Ease
+
+            </a>
+
+            <small>
+                Admin Panel
+            </small>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="admin-nav">
+
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="admin-nav-link active"
+            >
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="{% url 'admin_product_list' %}" class="admin-nav-link">
+
+                <i class="fa-solid fa-box"></i>
+
+                <span>
+                    Products
+                </span>
+
+            </a>
+
+
+            <a href="{% url 'admin_category_list' %}" class="admin-nav-link">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <span>
+                    Categories
+                </span>
+
+            </a>
+
+            <a href="{% url 'admin_subcategory_list' %}" class="admin-nav-link">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <span>
+                    Subcategories
+                </span>
+
+            </a>
+
+             <a href="{% url 'admin_brand_list' %}" class="admin-nav-link">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <span>
+                    Brands
+                </span>
+
+            </a>
+
+            
+            <a href="#" class="admin-nav-link">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span>
+                    Orders
+                </span>
+
+            </a>
+
+
+            <a href="#" class="admin-nav-link">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>
+                    Users
+                </span>
+
+            </a>
+
+
+            <p class="nav-title">
+                MANAGEMENT
+            </p>
+
+
+            <a href="#" class="admin-nav-link">
+
+                <i class="fa-solid fa-ticket"></i>
+
+                <span>
+                    Coupons
+                </span>
+
+            </a>
+
+
+            <a href="#" class="admin-nav-link">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                <span>
+                    Reports
+                </span>
+
+            </a>
+
+
+            <a href="#" class="admin-nav-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+
+        <div class="sidebar-bottom">
+
+            
+            <!-- admin_laout -->
+        
+               <a href="{% url 'admin_logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================
+         MAIN AREA
+    ================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================
+             TOPBAR
+        ================================== -->
+
+        <header class="admin-topbar">
+
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="sidebar-toggle"
+                >
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div>
+
+                    <h2>
+                        {% block page_title %}
+                        Dashboard
+                        {% endblock %}
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Side -->
+
+            <div class="topbar-right">
+
+
+                <!-- Notification -->
+
+                <button class="notification-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span>
+                        3
+                    </span>
+
+                </button>
+
+
+                <!-- Admin Profile -->
+
+                <div class="admin-profile">
+
+
+                    <div class="admin-avatar">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div class="admin-info">
+
+                        <strong>
+                            {{ request.session.admin_username }}
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================
+             CONTENT
+        ================================== -->
+
+        <section class="admin-content">
+
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="admin-message {{ message.tags }}">
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            {% block content %}
+
+            {% endblock %}
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<script>
+
+    const toggleButton =
+        document.querySelector('.sidebar-toggle');
+
+    const sidebar =
+        document.querySelector('.admin-sidebar');
+
+
+    if (toggleButton) {
+
+        toggleButton.addEventListener(
+            'click',
+            function () {
+
+                sidebar.classList.toggle('show');
+
+            }
+        );
+
+    }
+
+</script>
+
+
+{% block extra_js %}
+{% endblock %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+{% block title %}
+Manage Products | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Manage Products
+{% endblock %}
+
+
+{% block content %}
+
+<div class="product-page">
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+
+    <div class="product-header">
+
+        <div>
+
+            <h2>Manage Products</h2>
+
+            <p>
+                Add, manage and update your store products.
+            </p>
+
+        </div>
+
+
+        <a href="{% url 'admin_product_add' %}"
+           class="add-product-btn">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Product
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         PRODUCT TABLE
+    ========================== -->
+
+    <div class="product-table-wrapper">
+
+        <table class="product-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Image</th>
+
+                    <th>Product</th>
+
+                    <th>Category</th>
+
+                    <th>Subcategory</th>
+
+                    <th>Brand</th>
+
+                    <th>Price</th>
+
+                    <th>Discount</th>
+
+                    <th>Stock</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for product in products %}
+
+                <tr>
+
+                    <!-- IMAGE -->
+
+                    <td>
+
+                        {% if product.image %}
+
+                        <img
+                            src="{{ product.image.url }}"
+                            alt="{{ product.product_name }}"
+                            class="product-image"
+                        >
+
+                        {% else %}
+
+                        <div class="no-image">
+
+                            No Image
+
+                        </div>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- PRODUCT -->
+
+                    <td>
+
+                        <div class="product-name">
+
+                            {{ product.product_name }}
+
+                        </div>
+
+                        <small>
+
+                            {{ product.slug }}
+
+                        </small>
+
+                    </td>
+
+
+                    <!-- CATEGORY -->
+
+                    <td>
+
+                        {{ product.category.category_name }}
+
+                    </td>
+
+
+                    <!-- SUBCATEGORY -->
+
+                    <td>
+
+                        {{ product.subcategory.name }}
+
+                    </td>
+
+
+                    <!-- BRAND -->
+
+                    <td>
+
+                        {{ product.brand.name }}
+
+                    </td>
+
+
+                    <!-- PRICE -->
+
+                    <td>
+
+                        ₹{{ product.price }}
+
+                    </td>
+
+
+                    <!-- DISCOUNT -->
+
+                    <td>
+
+                        {% if product.discount %}
+
+                            ₹{{ product.discount }}
+
+                        {% else %}
+
+                            -
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- STOCK -->
+
+                    <td>
+
+                        {% if product.stock > 0 %}
+
+                            <span class="stock available">
+
+                                {{ product.stock }} Available
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="stock out">
+
+                                Out of Stock
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if product.status %}
+
+                        <span class="status active">
+
+                            Active
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="status inactive">
+
+                            Inactive
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ACTIONS -->
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <a href="#"
+                               class="view-btn">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </a>
+
+
+                            <a href="{% url 'admin_product_edit' product.id %}"
+                               class="edit-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </a>
+
+
+                            <a href="{% url 'admin_product_delete' product.id %}"
+                               class="delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="10">
+
+                        <div class="empty-products">
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                            <h3>No Products Found</h3>
+
+                            <p>
+                                Start by adding your first product.
+                            </p>
+
+
+                            <a href="{% url 'admin_product_add' %}">
+
+                                Add Product
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

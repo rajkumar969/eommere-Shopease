@@ -1,0 +1,244 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+
+{% block title %}
+Add Category | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Add Category
+{% endblock %}
+
+
+{% block content %}
+
+<div class="category-form-page">
+
+
+    <!-- =====================================
+         FORM HEADER
+    ====================================== -->
+
+    <div class="form-page-header">
+
+        <div>
+
+            <h2>
+                Add New Category
+            </h2>
+
+            <p>
+                Create a new product category for your store.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'admin_category_list' %}"
+            class="back-btn"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Categories
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================
+         CATEGORY FORM CARD
+    ====================================== -->
+
+    <div class="category-form-card">
+
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- =================================
+                 CATEGORY NAME
+            ================================== -->
+
+            <div class="form-group">
+
+                <label for="category_name">
+
+                    Category Name
+
+                    <span>
+                        *
+                    </span>
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="category_name"
+                    name="category_name"
+                    placeholder="Enter category name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- =================================
+                 SLUG
+            ================================== -->
+
+            <div class="form-group">
+
+                <label for="slug">
+
+                    Slug
+
+                    <span>
+                        *
+                    </span>
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="slug"
+                    name="slug"
+                    placeholder="Example: electronics"
+                >
+
+
+                <small>
+                    Leave blank to generate automatically.
+                </small>
+
+            </div>
+
+
+            <!-- =================================
+                 CATEGORY IMAGE
+            ================================== -->
+
+            <div class="form-group">
+
+                <label for="profile_image">
+
+                    Category Image
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="profile_image"
+                    name="profile_image"
+                    accept="image/*"
+                >
+
+
+                <small>
+                    Upload a category image.
+                </small>
+
+            </div>
+
+
+            <!-- =================================
+                 DESCRIPTION
+            ================================== -->
+
+            <div class="form-group">
+
+                <label for="description">
+
+                    Description
+
+                </label>
+
+
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    placeholder="Enter category description..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- =================================
+                 STATUS
+            ================================== -->
+
+            <div class="form-group status-group">
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        name="status"
+                        checked
+                    >
+
+                    <span>
+                        Active Category
+                    </span>
+
+                </label>
+
+
+                <small>
+                    Active categories will be visible to customers.
+                </small>
+
+            </div>
+
+
+            <!-- =================================
+                 FORM ACTIONS
+            ================================== -->
+
+            <div class="form-actions">
+
+
+                <a
+                    href="{% url 'admin_category_list' %}"
+                    class="cancel-btn"
+                >
+
+                    Cancel
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Category
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

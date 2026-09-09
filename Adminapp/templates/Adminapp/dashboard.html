@@ -1,0 +1,220 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+
+{% block title %}
+Admin Dashboard | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="dashboard-welcome">
+
+    <h1>
+        Welcome back, {{ request.session.admin_username }} 👋
+    </h1>
+
+    <p>
+        Here's what's happening with your store today.
+    </p>
+
+</div>
+
+
+<!-- =================================
+     STAT CARDS
+================================== -->
+
+<div class="stats-grid">
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon blue">
+
+            <i class="fa-solid fa-users"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                Total Users
+            </span>
+
+            <h3>
+                {{ register.count }}
+            </h3>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon green">
+
+            <i class="fa-solid fa-box"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                Total Products
+            </span>
+
+            <h3>
+                350
+            </h3>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon orange">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                Total Orders
+            </span>
+
+            <h3>
+                820
+            </h3>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon purple">
+
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                Total Revenue
+            </span>
+
+            <h3>
+                ₹2.5L
+            </h3>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =================================
+     DASHBOARD GRID
+================================== ----->
+
+<div class="dashboard-grid">
+
+
+    <!-- Recent Orders -->
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+                Recent Orders
+            </h3>
+
+            <a href="#">
+                View All
+            </a>
+
+        </div>
+
+
+        <div class="empty-state">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <p>
+                No recent orders available.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+                Quick Actions
+            </h3>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+            
+
+            <a href="{% url 'admin_category_add' %}">
+                <i class="fa-solid fa-layer-group"></i>
+                Add Category
+            </a>
+      
+          <a href="{% url 'admin_subcategory_add' %}">
+                <i class="fa-solid fa-plus"></i>
+                Add Subcategory
+            </a>
+           <a href="{% url 'admin_brand_add' %}">
+                <i class="fa-solid fa-plus"></i>
+                Add Brand
+            </a>
+
+            <a href="{% url 'admin_product_add' %}">
+                <i class="fa-solid fa-plus"></i>
+                Add Product
+            </a>
+
+           
+
+            <a href="#">
+                <i class="fa-solid fa-ticket"></i>
+                Create Coupon
+            </a>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

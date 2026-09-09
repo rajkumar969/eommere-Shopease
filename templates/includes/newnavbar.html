@@ -1,0 +1,349 @@
+{% load static %}
+
+<header class="header">
+
+
+<div class="container">
+
+    <nav class="navbar">
+
+        <!-- ================= LOGO ================= -->
+
+        <div class="logo">
+
+            <a href="{% url 'home' %}">
+                <span>Shop</span>Ease
+            </a>
+
+        </div>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <div class="search-box">
+
+            <form action="" method="GET">
+
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search products..."
+                >
+
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= MENU ================= -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'products' %}">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'category' %}">
+                    Categories
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <div class="nav-icons">
+
+
+            <!-- ================= WISHLIST ================= -->
+
+            <a href="{% url 'wishlist' %}" class="icon">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span class="badge">0</span>
+
+            </a>
+
+
+            <!-- ================= CART ================= -->
+
+            <a href="{% url 'cart' %}" class="icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="badge">0</span>
+
+            </a>
+
+
+            <!-- ================= MESSAGES ================= -->
+
+
+
+            <!-- ================= USER SESSION ================= -->
+
+            {% if request.session.username %}
+
+
+                <div class="user-menu">
+
+
+                    <!-- ===== USER BUTTON ===== -->
+
+                    <button class="user-btn" type="button">
+
+
+                        <!-- Profile Image -->
+
+                        <div class="user-avatar">
+
+                            <img
+                                src="{% static 'images/default-profile.png' %}"
+                                alt="Profile"
+                            >
+                           
+
+                        </div>
+
+
+                        <!-- User Name -->
+
+                        <div class="user-name-box">
+
+                            <span class="user-label">
+                                Welcome
+                            </span>
+
+                            <span class="user-name">
+
+                                {{ request.session.username }}
+
+                            </span>
+
+                        </div>
+
+
+                        <!-- Arrow -->
+
+                        <i class="fa-solid fa-chevron-down user-arrow"></i>
+
+
+                    </button>
+
+
+                    <!-- ===== DROPDOWN ===== -->
+
+                    <div class="dropdown-menu">
+
+
+                        <!-- ===== PROFILE HEADER ===== -->
+
+                        <div class="dropdown-profile">
+
+
+                            <div class="dropdown-avatar">
+
+                                <img
+                                    src="{% static 'images/default-profile.png' %}"
+                                    alt="Profile"
+                                >
+
+                            </div>
+
+
+                            <div class="dropdown-user-info">
+
+                                <h4>
+                                    {{ request.session.username }}
+                                </h4>
+
+                                <span>
+                                    My Account
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="dropdown-divider"></div>
+
+
+                        <!-- ===== MY PROFILE =====
+
+                        <a href="{% url 'profile' %}" class="dropdown-item">
+
+                            <div class="item-icon">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </div>
+
+                            <div class="item-content">
+
+                                <strong>
+                                    My Profile
+                                </strong>
+
+                                <span>
+                                    View and edit your profile
+                                </span>
+
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+
+                        </a>
+
+
+                        <!-- ===== MY ORDERS ===== -->
+
+                        <a href="{% url 'orders' %}" class="dropdown-item">
+
+                            <div class="item-icon">
+
+                                <i class="fa-solid fa-box"></i>
+
+                            </div>
+
+                            <div class="item-content">
+
+                                <strong>
+                                    My Orders
+                                </strong>
+
+                                <span>
+                                    Check your recent orders
+                                </span>
+
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+
+                        </a>
+
+
+                        <!-- ===== SETTINGS ===== -->
+
+                        <a href="#" class="dropdown-item">
+
+                            <div class="item-icon">
+
+                                <i class="fa-solid fa-gear"></i>
+
+                            </div>
+
+                            <div class="item-content">
+
+                                <strong>
+                                    Settings
+                                </strong>
+
+                                <span>
+                                    <!-- Manage your account -->
+                                </span>
+
+                            </div>
+
+                            <i class="fa-solid fa-chevron-right item-arrow"></i>
+
+                        </a>
+
+
+                        <div class="dropdown-divider"></div>
+
+
+                        <!-- ===== LOGOUT ===== -->
+
+                        <a href="{% url 'logout' %}"
+                           class="dropdown-item logout-item">
+
+                            <div class="item-icon logout-icon">
+
+                                <i class="fa-solid fa-right-from-bracket"></i>
+
+                            </div>
+
+                            <div class="item-content">
+
+                                <strong>
+                                    Logout
+                                </strong>
+
+                                <span>
+                                    <!-- Sign out from your account -->
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            {% else %}
+
+
+                <!-- ================= LOGIN ================= -->
+
+                <a href="{% url 'login' %}" class="login-btn">
+
+                    Login
+
+                </a>
+
+
+            {% endif %}
+ -->
+
+        </div>
+
+
+        <!-- ================= MOBILE MENU ================= -->
+
+        <button class="menu-btn" type="button">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+    </nav>
+
+</div>
+
+</header>
+
+

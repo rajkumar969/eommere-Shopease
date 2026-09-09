@@ -1,0 +1,204 @@
+/* ========================================
+   PRODUCT EDIT PAGE
+======================================== */
+
+.product-form-page {
+    width: 100%;
+}
+
+
+/* HEADER */
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.form-header p {
+    margin: 6px 0 0;
+    opacity: 0.7;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn {
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 7px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+
+/* FORM CARD */
+
+.product-form-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* FORM GRID */
+
+.product-form-card form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+
+/* INPUT */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 11px 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* FOCUS */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+}
+
+
+/* IMAGE */
+
+.current-product-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* STATUS */
+
+.status-group {
+    justify-content: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: 17px;
+    height: 17px;
+}
+
+
+/* BUTTON AREA */
+
+.form-actions {
+    grid-column: span 2;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+
+.cancel-btn,
+.save-btn {
+    padding: 11px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+/* CANCEL */
+
+.cancel-btn {
+    border: 1px solid #ddd;
+    color: #555;
+    background: #fff;
+}
+
+
+/* SAVE */
+
+.save-btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+}
+
+
+/* HOVER */
+
+.save-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .product-form-card form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .form-actions {
+        grid-column: span 1;
+    }
+
+}

@@ -1,0 +1,344 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+{% block title %}
+Add Product | ShopEase Admin
+{% endblock %}
+
+{% block page_title %}
+Add Product
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-form-page">
+
+    <div class="form-card">
+
+        <div class="form-header">
+            <div>
+                <h2>Add New Product</h2>
+                <p>Create a new product for your store.</p>
+            </div>
+
+            <a href="{% url 'admin_product_list' %}"
+               class="back-btn">
+                ← Back
+            </a>
+        </div>
+
+
+        <form method="POST"
+              enctype="multipart/form-data"
+              id="productForm">
+
+            {% csrf_token %}
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+
+                <label for="category">
+                    Category
+                </label>
+
+                <select
+                    name="category"
+                    id="category"
+                    required
+                >
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    {% for category in categories %}
+
+                    <option value="{{ category.id }}">
+                        {{ category.category_name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- SUBCATEGORY -->
+
+            <div class="form-group">
+
+                <label for="subcategory">
+                    Subcategory
+                </label>
+
+                <select
+                    name="subcategory"
+                    id="subcategory"
+                    required
+                >
+
+                    <option value="">
+                        Select Subcategory
+                    </option>
+
+                    {% for subcategory in subcategories %}
+
+                    <option
+                        value="{{ subcategory.id }}"
+                        data-category="{{ subcategory.category_name_id }}"
+                    >
+                        {{ subcategory.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- BRAND -->
+
+            <div class="form-group">
+
+                <label for="brand">
+                    Brand
+                </label>
+
+                <select
+                    name="brand"
+                    id="brand"
+                    required
+                >
+
+                    <option value="">
+                        Select Brand
+                    </option>
+
+                    {% for brand in brands %}
+
+                    <option value="{{ brand.id }}">
+                        {{ brand.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- PRODUCT NAME -->
+
+            <div class="form-group">
+
+                <label for="product_name">
+                    Product Name
+                </label>
+
+                <input
+                    type="text"
+                    name="product_name"
+                    id="product_name"
+                    placeholder="Enter product name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group">
+
+                <label for="slug">
+                    Slug
+                </label>
+
+                <input
+                    type="text"
+                    name="slug"
+                    id="slug"
+                    placeholder="product-slug"
+                >
+
+                <small>
+                    Leave empty to generate automatically.
+                </small>
+
+            </div>
+
+
+            <!-- PRICE + DISCOUNT -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        name="price"
+                        id="price"
+                        step="0.01"
+                        min="0"
+                        placeholder="₹0.00"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="discount">
+                        Discount
+                    </label>
+
+                    <input
+                        type="number"
+                        name="discount"
+                        id="discount"
+                        step="0.01"
+                        min="0"
+                        placeholder="0.00"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- STOCK + RATING -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="stock">
+                        Stock
+                    </label>
+
+                    <input
+                        type="number"
+                        name="stock"
+                        id="stock"
+                        min="0"
+                        placeholder="Enter stock quantity"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="rating">
+                        Rating
+                    </label>
+
+                    <input
+                        type="number"
+                        name="rating"
+                        id="rating"
+                        min="0"
+                        max="5"
+                        step="0.001"
+                        value="0.000"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGE -->
+
+            <div class="form-group">
+
+                <label for="image">
+                    Product Image
+                </label>
+
+                <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    accept="image/*"
+                    required
+                >
+
+                <div id="imagePreview"></div>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    name="description"
+                    id="description"
+                    rows="5"
+                    placeholder="Enter product description..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="status-group">
+
+                <input
+                    type="checkbox"
+                    name="status"
+                    id="status"
+                    checked
+                >
+
+                <label for="status">
+                    Active Product
+                </label>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-actions">
+
+                <a
+                    href="{% url 'admin_product_list' %}"
+                    class="btn-cancel"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn-submit"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    Add Product
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

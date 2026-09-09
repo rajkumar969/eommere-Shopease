@@ -1,0 +1,46 @@
+<td>
+
+    <div class="action-buttons">
+
+
+        <!-- VIEW -->
+
+        <a
+            href="{% url 'admin_category_view' category.id %}"
+            class="action-btn view-btn"
+            title="View Category"
+        >
+
+            <i class="fa-solid fa-eye"></i>
+
+        </a>
+
+
+        <!-- EDIT -->
+
+        <a
+            href="{% url 'admin_category_edit' category.id %}"
+            class="action-btn edit-btn"
+            title="Edit Category"
+        >
+
+            <i class="fa-solid fa-pen"></i>
+
+        </a>
+
+
+        <!-- DELETE -->
+
+        <a
+            href="{% url 'admin_category_delete' category.id %}"
+            class="action-btn delete-btn"
+            title="Delete Category"
+        >
+
+            <i class="fa-solid fa-trash"></i>
+
+        </a>
+
+    </div>
+
+</td>

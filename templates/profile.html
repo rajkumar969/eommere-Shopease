@@ -1,0 +1,333 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile | ShopEase</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/profile.css' %}"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ================= PROFILE PAGE ================= -->
+
+<div class="profile-page">
+
+
+    <!-- ================= BACK BUTTON ================= -->
+
+    <div class="back-container">
+
+        <a href="{% url 'home' %}" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+
+    <!-- ================= PROFILE CONTAINER ================= -->
+
+    <div class="profile-container">
+
+
+        <!-- ================= PROFILE HEADER ================= -->
+
+        <div class="profile-header">
+
+
+            <!-- Profile Image -->
+
+            <div class="profile-image">
+
+                <img
+                    src="{% static 'images/default-profile.png' %}"
+                    alt="Profile Image"
+                >
+
+            </div>
+
+
+            <!-- User Information -->
+
+            <div class="profile-heading">
+
+                <h1>
+                    {{ user.username }}
+                </h1>
+
+                <p>
+                    Welcome to your ShopEase account
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= PROFILE CONTENT ================= -->
+
+        <div class="profile-content">
+
+
+            <!-- ================= PERSONAL INFORMATION ================= -->
+
+            <div class="profile-section">
+
+
+                <div class="section-title">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    <h2>
+                        Personal Information
+                    </h2>
+
+                </div>
+
+
+                <!-- Username -->
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <div class="info-details">
+
+                        <span>
+                            Username
+                        </span>
+
+                        <strong>
+                            {{ user.username }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+                    <div class="info-details">
+
+                        <span>
+                            Email Address
+                        </span>
+
+                        <strong>
+                            {{ user.email }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                    </div>
+
+                    <div class="info-details">
+
+                        <span>
+                            Phone Number
+                        </span>
+
+                        <strong>
+                            {{ user.phone }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Date Joined -->
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                    </div>
+
+                    <div class="info-details">
+
+                        <span>
+                            Member Since
+                        </span>
+
+                        <strong>
+                            {{ user.date_join|date:"d M Y" }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= ACCOUNT INFORMATION ================= -->
+
+            <div class="profile-section">
+
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <h2>
+                        Account Information
+                    </h2>
+
+                </div>
+
+
+                <!-- Account Status -->
+
+                <div class="status-item">
+
+                    <span>
+                        Account Status
+                    </span>
+
+                    {% if user.is_active %}
+
+                        <span class="status active">
+                            Active
+                        </span>
+
+                    {% else %}
+
+                        <span class="status inactive">
+                            Inactive
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Account Type -->
+
+                <div class="status-item">
+
+                    <span>
+                        Account Type
+                    </span>
+
+                    {% if user.is_superuser %}
+
+                        <span class="account-type">
+                            Administrator
+                        </span>
+
+                    {% elif user.is_staff %}
+
+                        <span class="account-type">
+                            Staff
+                        </span>
+
+                    {% else %}
+
+                        <span class="account-type">
+                            Customer
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= ACTION BUTTONS ================= -->
+
+        <div class="profile-actions">
+
+
+            <a href="#" class="edit-profile-btn">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Edit Profile
+
+            </a>
+
+
+            <a
+                href="{% url 'logout' %}"
+                class="logout-btn"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

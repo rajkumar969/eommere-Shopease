@@ -1,0 +1,204 @@
+/* ===========================================
+   WISHLIST PAGE
+=========================================== */
+
+.wishlist-section{
+
+    padding:80px 0;
+
+    background:#f8fafc;
+
+}
+
+.wishlist-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.wishlist-card{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.wishlist-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.wishlist-image{
+
+    height:250px;
+
+    background:#f3f4f6;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.wishlist-image img{
+
+    width:80%;
+
+    height:220px;
+
+    object-fit:contain;
+
+}
+
+.wishlist-content{
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.wishlist-content h3{
+
+    margin-bottom:10px;
+
+}
+
+.wishlist-content p{
+
+    color:#6b7280;
+
+    margin-bottom:10px;
+
+}
+
+.wishlist-content h4{
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+    font-size:22px;
+
+}
+
+.wishlist-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.cart-btn,
+.remove-btn{
+
+    flex:1;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    color:#fff;
+
+    transition:.3s;
+
+}
+
+.cart-btn{
+
+    background:#2563eb;
+
+}
+
+.cart-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.remove-btn{
+
+    background:#ef4444;
+
+}
+
+.remove-btn:hover{
+
+    background:#dc2626;
+
+}
+
+.empty-wishlist{
+
+    background:#fff;
+
+    padding:80px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.shop-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:14px 30px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.shop-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media(max-width:768px){
+
+.wishlist-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.wishlist-buttons{
+
+flex-direction:column;
+
+}
+
+}

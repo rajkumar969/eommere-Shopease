@@ -1,0 +1,359 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+{% block title %}
+Edit Product | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Edit Product
+{% endblock %}
+
+
+{% block content %}
+
+<div class="product-form-page">
+
+    <div class="form-header">
+
+        <div>
+
+            <h2>Edit Product</h2>
+
+            <p>
+                Update product information.
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_product_list' %}"
+           class="back-btn">
+
+            ← Back to Products
+
+        </a>
+
+    </div>
+
+
+    <div class="product-form-card">
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+
+                <label>Category *</label>
+
+                <select
+                    name="category"
+                    required
+                >
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    {% for category in categories %}
+
+                    <option
+                        value="{{ category.id }}"
+
+                        {% if product.category.id == category.id %}
+                        selected
+                        {% endif %}
+                    >
+
+                        {{ category.category_name }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- SUBCATEGORY -->
+
+            <div class="form-group">
+
+                <label>Subcategory *</label>
+
+                <select
+                    name="subcategory"
+                    required
+                >
+
+                    <option value="">
+                        Select Subcategory
+                    </option>
+
+                    {% for subcategory in subcategories %}
+
+                    <option
+                        value="{{ subcategory.id }}"
+
+                        {% if product.subcategory.id == subcategory.id %}
+                        selected
+                        {% endif %}
+                    >
+
+                        {{ subcategory.name }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- BRAND -->
+
+            <div class="form-group">
+
+                <label>Brand *</label>
+
+                <select
+                    name="brand"
+                    required
+                >
+
+                    <option value="">
+                        Select Brand
+                    </option>
+
+                    {% for brand in brands %}
+
+                    <option
+                        value="{{ brand.id }}"
+
+                        {% if product.brand.id == brand.id %}
+                        selected
+                        {% endif %}
+                    >
+
+                        {{ brand.name }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- PRODUCT NAME -->
+
+            <div class="form-group full-width">
+
+                <label>Product Name *</label>
+
+                <input
+                    type="text"
+                    name="product_name"
+                    value="{{ product.product_name }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group full-width">
+
+                <label>Slug</label>
+
+                <input
+                    type="text"
+                    name="slug"
+                    value="{{ product.slug }}"
+                >
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="form-group">
+
+                <label>Price *</label>
+
+                <input
+                    type="number"
+                    name="price"
+                    value="{{ product.price }}"
+                    step="0.01"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DISCOUNT -->
+
+            <div class="form-group">
+
+                <label>Discount</label>
+
+                <input
+                    type="number"
+                    name="discount"
+
+                    value="{{ product.discount|default_if_none:'' }}"
+
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <!-- STOCK -->
+
+            <div class="form-group">
+
+                <label>Stock</label>
+
+                <input
+                    type="number"
+                    name="stock"
+                    value="{{ product.stock }}"
+                >
+
+            </div>
+
+
+            <!-- RATING -->
+
+            <div class="form-group">
+
+                <label>Rating</label>
+
+                <input
+                    type="number"
+                    name="rating"
+                    value="{{ product.rating }}"
+                    step="0.001"
+                >
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    rows="5"
+                >{{ product.description }}</textarea>
+
+            </div>
+
+
+            <!-- CURRENT IMAGE -->
+
+            <div class="form-group">
+
+                <label>Current Image</label>
+
+                {% if product.image %}
+
+                    <img
+                        src="{{ product.image.url }}"
+                        class="current-product-image"
+                        alt="{{ product.product_name }}"
+                    >
+
+                {% else %}
+
+                    <p>No image available</p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- NEW IMAGE -->
+
+            <div class="form-group">
+
+                <label>Change Image</label>
+
+                <input
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group status-group">
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        name="status"
+
+                        {% if product.status %}
+                        checked
+                        {% endif %}
+                    >
+
+                    Active Product
+
+                </label>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-actions">
+
+                <a
+                    href="{% url 'admin_product_list' %}"
+                    class="cancel-btn"
+                >
+
+                    Cancel
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+
+                    Update Product
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

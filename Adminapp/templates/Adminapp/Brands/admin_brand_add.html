@@ -1,0 +1,199 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+{% load static %}
+
+
+{% block title %}
+Add Brand | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Add Brand
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{% static 'Adminapp/css/brand_add.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="brand-add-page">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="brand-add-header">
+
+        <div>
+            <h2>Add New Brand</h2>
+
+            <p>
+                Add a new brand to your e-commerce store.
+            </p>
+        </div>
+
+
+        <a href="{% url 'admin_brand_list' %}"
+           class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Brands
+
+        </a>
+
+    </div>
+
+
+    <!-- BRAND FORM -->
+
+    <div class="brand-form-container">
+
+        <form method="POST"
+              enctype="multipart/form-data"
+              class="brand-form">
+
+            {% csrf_token %}
+
+
+            <!-- BRAND NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Brand Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Samsung"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group">
+
+                <label for="slug">
+
+                    Slug
+
+                    <span class="optional">
+                        (Optional)
+                    </span>
+
+                </label>
+
+                <input
+                    type="text"
+                    id="slug"
+                    name="slug"
+                    placeholder="e.g. samsung"
+                >
+
+                <small>
+                    Leave empty to generate automatically from Brand Name.
+                </small>
+
+            </div>
+
+
+            <!-- BRAND IMAGE -->
+
+            <div class="form-group">
+
+                <label for="image">
+                    Brand Image
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                >
+
+                <small>
+                    Upload brand logo or image.
+                </small>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    placeholder="Enter brand description..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="status-group">
+
+                <input
+                    type="checkbox"
+                    id="status"
+                    name="status"
+                    checked
+                >
+
+                <label for="status">
+                    Active Brand
+                </label>
+
+            </div>
+
+
+            <!-- FORM BUTTONS -->
+
+            <div class="form-actions">
+
+                <a href="{% url 'admin_brand_list' %}"
+                   class="cancel-btn">
+
+                    Cancel
+
+                </a>
+
+
+                <button type="submit"
+                        class="btn-submit">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Brand
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

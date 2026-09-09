@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Categories | ShopEase
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= PAGE HEADER ================= -->
+
+<section class="page-header">
+
+    <div class="container">
+
+        <h1>Shop By Categories</h1>
+
+        <p>
+            Explore products by category.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CATEGORY SECTION ================= -->
+ 
+
+<section class="category-page">
+
+    <div class="container">
+
+        <div class="category-grid">
+           
+            {% for category1 in categories %}
+            
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{{ category1.profile_image.url }}" alt="{{ category1.profile_image}}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>
+
+                        {{ category1.category_name }}
+
+                    </h3>
+
+                    <p>
+
+                        {{ category1.description|truncatewords:12 }}
+
+                    </p>
+
+                    <a href="#" class="category-btn">
+
+                        View Products
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <h2>No Categories Available</h2>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

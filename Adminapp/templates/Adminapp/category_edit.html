@@ -1,0 +1,183 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+
+{% block title %}
+Edit Category | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Edit Category
+{% endblock %}
+
+
+{% block content %}
+
+<div class="admin-form-card">
+
+    <div class="form-header">
+
+        <div>
+
+            <h2>
+                Edit Category
+            </h2>
+
+            <p>
+                Update category information.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'admin_category_list' %}"
+            class="back-btn"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back
+
+        </a>
+
+    </div>
+
+
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        {% csrf_token %}
+
+
+        <!-- CATEGORY NAME -->
+
+        <div class="form-group">
+
+            <label>
+                Category Name
+            </label>
+
+            <input
+                type="text"
+                name="category_name"
+                value="{{ category.category_name }}"
+                required
+            >
+
+        </div>
+
+
+        <!-- SLUG -->
+
+        <div class="form-group">
+
+            <label>
+                Slug
+            </label>
+
+            <input
+                type="text"
+                name="slug"
+                value="{{ category.slug }}"
+                required
+            >
+
+        </div>
+
+
+        <!-- CURRENT IMAGE -->
+
+        {% if category.profile_image %}
+
+        <div class="current-image">
+
+            <p>
+                Current Image
+            </p>
+
+            <img height="100" width="100"
+                src="{{ category.profile_image.url }}"
+                alt="{{ category.category_name }}"
+            >
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- NEW IMAGE -->
+
+        <div class="form-group">
+
+            <label>
+                Change Image
+            </label>
+
+            <input
+                type="file"
+                name="profile_image"
+                accept="image/*"
+            >
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group">
+
+            <label>
+                Description
+            </label>
+
+            <textarea
+                name="description"
+                rows="5"
+            >{{ category.description }}</textarea>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="form-group checkbox-group">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="status"
+                    {% if category.status %}
+                        checked
+                    {% endif %}
+                >
+
+                Active Category
+
+            </label>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            class="btn-primary"
+        >
+
+            <i class="fa-solid fa-save"></i>
+
+            Update Category
+
+        </button>
+
+
+    </form>
+
+</div>
+
+{% endblock %}

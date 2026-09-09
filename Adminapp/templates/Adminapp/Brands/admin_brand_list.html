@@ -1,0 +1,281 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+
+{% block title %}
+Manage Brands | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Manage Brands
+{% endblock %}
+
+
+{% block content %}
+
+<div class="brand-page">
+
+
+ <div class="brand-header">
+
+    <div class="brand-title">
+        <h2>Manage Brands</h2>
+
+        <p>
+            Manage all brands available in your store.
+        </p>
+    </div>
+
+
+    <div class="brand-header-actions">
+
+        <a href="{% url 'admin_brand_add' %}"
+           class="add-brand-btn">
+
+            <i class="fa-solid fa-plus"></i>
+            Add Brand
+
+        </a>
+
+
+        <a href="{% url 'dashboard' %}"
+           class="dashboard-btn">
+
+            Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+    <!-- =================================
+         BRAND TABLE
+    ================================== -->
+
+    <div class="brand-table-wrapper">
+
+        <table class="brand-table">
+
+
+            <!-- TABLE HEADER -->
+
+            <thead>
+
+                <tr>
+
+                    <th>Image</th>
+
+                    <th>Brand Name</th>
+
+                    <th>Slug</th>
+
+                    <th>Description</th>
+
+                    <th>Status</th>
+
+                    <th>Created At</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+
+            <!-- TABLE BODY -->
+
+            <tbody>
+
+
+                {% for brand in brands %}
+
+                <tr>
+
+
+                    <!-- BRAND IMAGE -->
+
+                    <td>
+
+                        {% if brand.image %}
+
+                        <img
+                            src="{{ brand.image.url }}"
+                            alt="{{ brand.name }}"
+                            class="brand-image"
+                        >
+
+                        {% else %}
+
+                        <div class="no-brand-image">
+
+                            <i class="fa-solid fa-image"></i>
+
+                        </div>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- BRAND NAME -->
+
+                    <td>
+
+                        <strong class="brand-name">
+
+                            {{ brand.name }}
+
+                        </strong>
+
+                    </td>
+
+
+                    <!-- SLUG -->
+
+                    <td>
+
+                        <span class="brand-slug">
+
+                            {{ brand.slug }}
+
+                        </span>
+
+                    </td>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <td class="brand-description">
+
+                        {{ brand.description|default:"No description"|truncatewords:10 }}
+
+                    </td>
+
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if brand.status %}
+
+                        <span class="brand-status active">
+
+                            Active
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="brand-status inactive">
+
+                            Inactive
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- CREATED DATE -->
+
+                    <td>
+
+                        {{ brand.created_at|date:"d M Y" }}
+
+                    </td>
+
+
+                    <!-- ACTIONS -->
+
+                    <td>
+
+                        <div class="brand-actions">
+
+
+                            <!-- EDIT -->
+
+                            <a
+                                href="{% url 'admin_brand_edit' brand.id %}"
+                                class="brand-edit-btn"
+                                title="Edit Brand"
+                            >
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </a>
+
+
+                            <!-- DELETE -->
+
+                            <a
+                                href="{% url 'admin_brand_delete' brand.id %}"
+                                class="brand-delete-btn"
+                                title="Delete Brand"
+                                onclick="return confirm('Are you sure you want to delete {{ brand.name }}?')"
+                            >
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </a>
+
+
+                        </div>
+
+                    </td>
+
+
+                </tr>
+
+
+                <!-- =================================
+                     EMPTY STATE
+                ================================== -->
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="7">
+
+                        <div class="empty-brand">
+
+                            <i class="fa-solid fa-tags"></i>
+
+                            <h3>No Brands Available</h3>
+
+                            <p>
+                                Start by adding your first brand.
+                            </p>
+
+
+                            <a
+                                href="{% url 'admin_brand_add' %}"
+                                class="empty-add-brand-btn"
+                            >
+
+                                <i class="fa-solid fa-plus"></i>
+
+                                Add Brand
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

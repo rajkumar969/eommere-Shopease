@@ -1,0 +1,95 @@
+<form method="POST" id="subcategoryForm">
+
+    {% csrf_token %}
+
+    <div class="form-group">
+
+        <label>Category</label>
+
+        <select name="category" required>
+
+            <option value="">
+                Select Category
+            </option>
+
+            {% for category in categories %}
+
+            <option value="{{ category.id }}">
+                {{ category.category_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>Subcategory Name</label>
+
+        <input
+            type="text"
+            name="name"
+            id="subcategory_name"
+            required
+            placeholder="e.g. Smartphones"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>Slug</label>
+
+        <input
+            type="text"
+            name="slug"
+            id="subcategory_slug"
+            placeholder="smartphones"
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>Description</label>
+
+        <textarea
+            name="description"
+            rows="4"
+        ></textarea>
+
+    </div>
+
+
+    <div class="status-group">
+
+        <input
+            type="checkbox"
+            name="status"
+            checked
+        >
+
+        <label>
+            Active Subcategory
+        </label>
+
+    </div>
+
+
+    <div class="form-actions">
+
+        <button
+            type="submit"
+            class="btn-submit"
+        >
+            Add Subcategory
+        </button>
+
+    </div>
+
+</form>

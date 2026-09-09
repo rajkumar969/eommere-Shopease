@@ -1,0 +1,93 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+
+{% block title %}
+Delete Category | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Delete Category
+{% endblock %}
+
+
+{% block content %}
+
+<div class="delete-card">
+
+
+    <div class="delete-icon">
+
+        <i class="fa-solid fa-trash"></i>
+
+    </div>
+
+
+    <h2>
+        Delete Category?
+    </h2>
+
+
+    <p>
+
+        Are you sure you want to delete
+
+        <strong>
+            "{{ category.category_name }}"
+        </strong>
+
+        ?
+
+    </p>
+
+
+    <p class="warning-text">
+
+        This action cannot be undone.
+
+    </p>
+
+
+    <div class="delete-actions">
+
+
+        <!-- CONFIRM DELETE -->
+
+        <form
+            method="POST"
+        >
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="delete-confirm-btn"
+            >
+
+                <i class="fa-solid fa-trash"></i>
+
+                Yes, Delete
+
+            </button>
+
+        </form>
+
+
+        <!-- CANCEL -->
+
+        <a
+            href="{% url 'admin_category_list' %}"
+            class="cancel-btn"
+        >
+
+            Cancel
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends 'Adminapp/base_admin.html' %}
+
+
+{% block title %}
+View Category | ShopEase
+{% endblock %}
+
+
+{% block page_title %}
+Category Details
+{% endblock %}
+
+
+{% block content %}
+
+<div class="category-detail-card">
+
+
+    <!-- IMAGE -->
+
+    <div class="detail-image">
+
+        {% if category.profile_image %}
+
+            <img
+                src="{{ category.profile_image.url }}"
+                alt="{{ category.category_name }}"
+            >
+
+        {% else %}
+
+            <div class="no-detail-image">
+
+                <i class="fa-solid fa-image"></i>
+
+                <span>
+                    No Image
+                </span>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- DETAILS -->
+
+    <div class="category-details">
+
+        <h2>
+            {{ category.category_name }}
+        </h2>
+
+
+        <div class="detail-row">
+
+            <strong>
+                ID
+            </strong>
+
+            <span>
+                {{ category.id }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <strong>
+                Slug
+            </strong>
+
+            <span>
+                {{ category.slug }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <strong>
+                Status
+            </strong>
+
+            <span>
+
+                {% if category.status %}
+
+                    Active
+
+                {% else %}
+
+                    Inactive
+
+                {% endif %}
+
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <strong>
+                Created At
+            </strong>
+
+            <span>
+                {{ category.created_at|date:"d M Y, h:i A" }}
+            </span>
+
+        </div>
+
+
+        <div class="description-box">
+
+            <strong>
+                Description
+            </strong>
+
+            <p>
+
+                {% if category.description %}
+
+                    {{ category.description }}
+
+                {% else %}
+
+                    No description available.
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="detail-actions">
+
+            <a
+                href="{% url 'category_edit' category.id %}"
+                class="btn-primary"
+            >
+
+                <i class="fa-solid fa-pen"></i>
+
+                Edit
+
+            </a>
+
+
+            <a
+                href="{% url 'admin_category_list' %}"
+                class="back-btn"
+            >
+
+                Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

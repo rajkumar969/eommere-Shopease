@@ -1,0 +1,216 @@
+{% load static %}
+
+<header class="header">
+
+
+<div class="container">
+
+    <nav class="navbar">
+
+        <!-- ================= LOGO ================= -->
+
+        <div class="logo">
+
+            <a href="{% url 'home' %}">
+                <span>Shop</span>Ease
+            </a>
+
+        </div>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <div class="search-box">
+
+            <form action="" method="GET">
+
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search products..."
+                >
+
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= MENU ================= -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'products_list' %}">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'category' %}">
+                    Categories
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <div class="nav-icons">
+
+
+            <!-- ================= WISHLIST ================= -->
+
+            <a href="{% url 'wishlist' %}" class="icon">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span class="badge">0</span>
+
+            </a>
+
+
+            <!-- ================= CART ================= -->
+
+            <a href="{% url 'cart' %}" class="icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="badge">0</span>
+
+            </a>
+
+
+            <!-- ================= MESSAGES ================= -->
+
+ 
+<!-- ================= USER SESSION ================= -->
+
+<div class="nav-links right-0 top-full mt-3 w-52 bg-white shadow-xl rounded-lg 
+                opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                transition-all duration-200 z-50 overflow-hidden">
+
+                            <!-- User Info -->
+                            <div class="px-4 py-3 bg-gray-50 border-b">
+                               
+                                <p class="text-xs text-gray-500 truncate font-bold">
+                                    <!-- {{ request.session.userid }} -->
+                                </p>
+                            </div>
+                               
+                            <!-- Menu -->
+ <select name="other" id="other" onchange="if (this.value) window.location.href=this.value;">
+   
+<!-- Profile Header -->
+<div class="dropdown-profile">
+
+    <div class="profile-image" style="border-color: red;">
+        <img
+            src="{% static 'images/default-profile.png' %}"
+            alt="Profile Image"
+        >
+    </div>
+
+    <div class="profile-info">
+        <strong>{{ user.username }}</strong>
+        <span> Account</span>
+    </div>
+
+</div>
+
+
+<!-- My Profile -->
+<option value="{% url 'profile'  %}" class="dropdown-item">
+
+    <span>👤</span>
+
+    <strong>
+     Profile
+    </strong>
+
+</option>
+<option value="{% url 'orders' %}"  class="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"><span>📦</span> My Orders</option>
+{% if  request.session.username %}
+
+
+<option value="{% url 'logout' %}" class="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"> <strong> <span>🚪</span>Logout </strong></option>
+{% else %}
+    <option value="{% url 'login' %}"><span>🚪</span>Login</option>
+
+{% endif %}
+</select>
+
+
+        <!-- ================= MOBILE MENU ================= -->
+
+        <button class="menu-btn" type="button">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+    </nav>
+
+</div>
+
+</header>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const profileToggle = document.getElementById("profileToggle");
+    const profileDropdown = document.getElementById("profileDropdown");
+
+    if (profileToggle && profileDropdown) {
+
+        profileToggle.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            profileDropdown.classList.toggle("show");
+
+        });
+
+
+        // Outside click
+
+        document.addEventListener("click", function (event) {
+
+            if (!profileDropdown.contains(event.target) &&
+                !profileToggle.contains(event.target)) {
+
+                profileDropdown.classList.remove("show");
+
+            }
+
+        });
+
+    }
+
+});
+
+</script>

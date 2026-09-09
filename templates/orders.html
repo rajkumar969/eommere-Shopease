@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Orders | ShopEase</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/orders.css' %}"
+    >
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ================= ORDERS PAGE ================= -->
+
+<div class="orders-page">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="orders-top">
+
+
+        <div>
+
+            <h1>
+                My Orders
+            </h1>
+
+            <p>
+                Track and manage your recent orders
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'products' %}"
+            class="shop-btn"
+        >
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            Continue Shopping
+
+        </a>
+
+
+    </div>
+
+
+    <!-- ================= ORDER CONTAINER ================= -->
+
+    <div class="orders-container">
+
+
+        <!-- ================= EMPTY ORDER ================= -->
+
+        <div class="empty-orders">
+
+
+            <div class="empty-icon">
+
+                <i class="fa-solid fa-box-open"></i>
+
+            </div>
+
+
+            <h2>
+                No Orders Yet
+            </h2>
+
+
+            <p>
+                You haven't placed any orders yet.
+                Start shopping and your orders will appear here.
+            </p>
+
+
+            <a
+                href="{% url 'products' %}"
+                class="start-shopping-btn"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Start Shopping
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
