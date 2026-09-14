@@ -28,21 +28,21 @@ def register(request):
         #----------------------------------------------
         
         customer=user.objects.create(
-        username=name,
-        email=email,
-        password=hash_pass,
-        phone=phone
-        
+            username=name,
+            email=email,
+            password=hash_pass,
+            phone=phone
+            
 
-        )
+            )
         customer.save()
         messages.success(request,'Registration Successfuly')
         return redirect('login')
-    return render(request,'register.html',{'custormer':customer})
+    return render(request,'register.html')
 
 
 def login(request):
-    if request.method=="POST":
+    if request.method =="POST":
          email=request.POST.get('email')
          password=request.POST.get('password')
          try:
